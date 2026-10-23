@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: job-hunter-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/jobhunter}
+    username: ${DB_USERNAME:jobhunter}
+    password: ${DB_PASSWORD:jobhunter_local_only}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  jackson:
+    default-property-inclusion: non_null
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+app:
+  security:
+    # Development CORS only; configure authenticated access before public deployment.
+    allowed-origin: ${FRONTEND_ORIGIN:http://localhost:4200}
