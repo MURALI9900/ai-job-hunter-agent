@@ -1,0 +1,29 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+**/application-local.yml
+**/credentials.json
+**/token.json
+**/*-oauth-client*.json
+
+# Java / Maven
+**/target/
+*.class
+*.log
+
+# Node / Angular
+**/node_modules/
+**/dist/
+**/.angular/
+npm-debug.log*
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Local data
+data/
