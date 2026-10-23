@@ -20,7 +20,7 @@ A privacy-conscious job-search assistant that collects permitted job listings, s
 
 ## Status
 
-**Phase 1 scaffold:** project structure, job listing API, PostgreSQL, and dashboard starter. Gmail OAuth, source connectors, AI matching, and application workflows are not connected yet.
+**Current status:** initial scaffold, job CRUD API, PostgreSQL persistence, Angular dashboard, career-profile API, and deterministic match scoring are committed. Gmail OAuth, automated job ingestion, recruiter outreach, and application workflows are the next phases. The project has not yet been built or runtime-tested in this environment.
 
 ## Run locally
 
