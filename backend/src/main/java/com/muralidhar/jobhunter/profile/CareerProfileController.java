@@ -23,12 +23,15 @@ public class CareerProfileController {
     public CareerProfile update(@Valid @RequestBody CareerProfileUpdateRequest request) {
         CareerProfile profile = repository.findById(DEFAULT_PROFILE_ID)
                 .orElseGet(CareerProfile::defaults);
-        profile.setDisplayName(request.displayName());
-        profile.setTargetTitles(request.targetTitles());
-        profile.setSkills(request.skills());
-        profile.setLocations(request.locations());
-        profile.setExperienceMonths(request.experienceMonths());
-        profile.setMinimumMatchScore(request.minimumMatchScore());
+
+        // Treat omitted/null fields as "leave unchanged" so partial updates are safe.
+        if (request.displayName() != null) profile.setDisplayName(request.displayName());
+        if (request.targetTitles() != null) profile.setTargetTitles(request.targetTitles());
+        if (request.skills() != null) profile.setSkills(request.skills());
+        if (request.locations() != null) profile.setLocations(request.locations());
+        if (request.experienceMonths() != null) profile.setExperienceMonths(request.experienceMonths());
+        if (request.minimumMatchScore() != null) profile.setMinimumMatchScore(request.minimumMatchScore());
+
         return repository.save(profile);
     }
 }
