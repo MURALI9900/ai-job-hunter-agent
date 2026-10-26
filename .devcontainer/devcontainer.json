@@ -1,0 +1,39 @@
+{
+  "name": "AI Job Hunter Agent",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "installMaven": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8080, 4200, 5432],
+  "portsAttributes": {
+    "8080": {
+      "label": "Job Hunter API",
+      "onAutoForward": "notify"
+    },
+    "4200": {
+      "label": "Job Hunter Dashboard",
+      "onAutoForward": "openBrowser"
+    },
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "ignore"
+    }
+  },
+  "postCreateCommand": "cd frontend && npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "angular.ng-template",
+        "redhat.vscode-yaml"
+      ]
+    }
+  }
+}
