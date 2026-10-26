@@ -3,6 +3,7 @@ package com.muralidhar.jobhunter.profile;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -18,26 +19,26 @@ public class CareerProfile {
 
     @Size(max = 160)
     @Column(length = 160)
-    private String displayName = "";
+    private String displayName = "Muralidhar R";
 
     @Size(max = 2000)
     @Column(length = 2000)
-    private String targetTitles = "Full Stack Developer, Senior Full Stack Developer, Java Developer";
+    private String targetTitles = "Full Stack Developer, Senior Full Stack Developer, Java Developer, Senior Consultant";
 
     @Size(max = 4000)
     @Column(length = 4000)
-    private String skills = "Java, Spring Boot, Microservices, REST API, Angular, TypeScript, SQL, Oracle, PostgreSQL, Hibernate";
+    private String skills = "Java 8/11/17, Spring Boot, Microservices, REST APIs, Angular, TypeScript, JavaScript, SQL, Oracle, PostgreSQL, Microsoft SQL Server, Spring Data JPA, Hibernate, Oracle FLEXCUBE, OIPA, OBDX, Kafka, Camunda BPM, BPMN, Docker, CI/CD, GitOps, API Testing, Functional Testing, Integration Testing, UAT, Production Support, Performance Optimization";
 
     @Size(max = 1000)
     @Column(length = 1000)
-    private String locations = "Bengaluru, Hyderabad, Remote";
+    private String locations = "Remote, Bengaluru, Hyderabad";
 
     @Min(0)
     @Max(600)
     private Integer experienceMonths = 54;
 
     @Min(0)
-    @Max(1000)
+    @Max(100)
     private Integer minimumMatchScore = 60;
 
     @Column(nullable = false)
@@ -50,7 +51,7 @@ public class CareerProfile {
         return new CareerProfile();
     }
 
-    @jakarta.persistence.PreUpdate
+    @PreUpdate
     void onUpdate() {
         updatedAt = Instant.now();
     }
